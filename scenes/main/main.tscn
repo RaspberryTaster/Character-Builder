@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://g4pmy31y0xbp"]
+[gd_scene load_steps=37 format=3 uid="uid://g4pmy31y0xbp"]
 
 [ext_resource type="Texture2D" uid="uid://b7p5xg7wirb0g" path="res://icons/beech.png" id="1_nsc52"]
+[ext_resource type="PackedScene" uid="uid://hgxg6k6ew5ig" path="res://scenes/ui/feat_button/feat_button.tscn" id="2_g5q8q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_734y0"]
 content_margin_left = 20.0
@@ -63,6 +64,8 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb37u"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tt3j"]
+
 [sub_resource type="Theme" id="Theme_5qejq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6qgo"]
@@ -73,19 +76,96 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cf75"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tt3j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jtve"]
+bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqya"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 0.419608)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kqap"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yahux"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y71ja"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jksd7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xu0fo"]
+
+[sub_resource type="Theme" id="Theme_8qpis"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nh8wo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lif5d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5neb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6lcd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gh3pk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4comj"]
+bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
 
 [node name="Main" type="Node"]
 
 [node name="Header" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Header"]
-offset_right = 431.0
-offset_bottom = 42.0
-theme_override_constants/separation = 60
+[node name="Background" type="ColorRect" parent="Header"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.686275, 0.364706, 0.847059, 1)
 
-[node name="Button2" type="Button" parent="Header/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="ColorRect" parent="Header/Background/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+color = Color(0.109804, 0.105882, 0.141176, 1)
+
+[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/Header"]
+layout_mode = 2
+offset_left = 60.0
+offset_right = 163.0
+offset_bottom = 50.0
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_734y0")
@@ -95,11 +175,14 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_734y0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_734y0")
 text = "Menu"
 
-[node name="CharacterTab" type="HBoxContainer" parent="Header/HBoxContainer"]
+[node name="CharacterTab" type="HBoxContainer" parent="Header/Background/VBoxContainer/Header"]
 layout_mode = 2
+offset_left = 223.0
+offset_right = 491.0
+offset_bottom = 50.0
 theme_override_constants/separation = 0
 
-[node name="CloseCharacter" type="Button" parent="Header/HBoxContainer/CharacterTab"]
+[node name="CloseCharacter" type="Button" parent="Header/Background/VBoxContainer/Header/CharacterTab"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n0fkj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_lajav")
@@ -108,7 +191,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_qaaig")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iabnr")
 text = "X"
 
-[node name="SwitchCharacter" type="Button" parent="Header/HBoxContainer/CharacterTab"]
+[node name="SwitchCharacter" type="Button" parent="Header/Background/VBoxContainer/Header/CharacterTab"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0ffwd")
@@ -118,30 +201,27 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0ffwd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0ffwd")
 text = "Unknown Adventurer - Fighter 1"
 
-[node name="ColorRect2" type="ColorRect" parent="Header"]
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 44.0
-offset_bottom = 648.495
-grow_horizontal = 2
-color = Color(0.686275, 0.364706, 0.847059, 1)
+[node name="ColorRect" type="ColorRect" parent="Header/Background/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.109804, 0.105882, 0.141176, 0)
 
-[node name="SplitContainer" type="SplitContainer" parent="Header"]
-anchors_preset = -1
-anchor_top = 0.0783333
+[node name="SplitContainer" type="SplitContainer" parent="Header/Background/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 1.07876
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 5
 split_offset = 250
-metadata/_edit_use_anchors_ = true
 
-[node name="BuildSection" type="ColorRect" parent="Header/SplitContainer"]
+[node name="BuildSection" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer"]
 clip_contents = true
 layout_mode = 2
 color = Color(0.109804, 0.105882, 0.141176, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Header/SplitContainer/BuildSection"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,20 +230,20 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="BackgroundOptions" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+[node name="BackgroundOptions" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "Level 1
@@ -171,22 +251,22 @@ text = "Level 1
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ssmnw")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -194,7 +274,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
 text = "Human"
 
-[node name="Button2" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -202,7 +282,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
 text = "Seer"
 
-[node name="Button3" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -210,13 +290,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
 text = "Fighter"
 
-[node name="ColorRect3" type="ColorRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3"]
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -228,11 +308,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -240,7 +320,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
 text = "Human"
 
-[node name="Button2" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -248,7 +328,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
 text = "Seer"
 
-[node name="Button3" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -256,36 +336,142 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
 text = "Fighter"
 
-[node name="Level-1-Options" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+[node name="Level-1-Options" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
 layout_mode = 2
 text = "Level 1
 "
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ssmnw")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="FeatButton" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_nsc52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
+
+[node name="FeatButton2" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_nsc52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
+
+[node name="FeatButton3" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_nsc52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
+
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -293,7 +479,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
 text = "Heritage"
 
-[node name="Button2" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -301,7 +487,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
 text = "Ancestory"
 
-[node name="Button3" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -309,10 +495,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
 text = "Class Feat"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_5qejq")
 theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
@@ -325,292 +511,309 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1cf75")
 text = "Reactive Strike"
 alignment = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="FeatButton" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Level-2-Options" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_nsc52")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
-
-[node name="FeatButton2" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_nsc52")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
-
-[node name="FeatButton3" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_nsc52")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
-
-[node name="Level-2-Options" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
 layout_mode = 2
-text = "Level 1
+text = "Level 2
 "
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ssmnw")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jtve")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button2" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
-text = "Skill
-"
-
-[node name="Button3" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
-text = "Class Feat"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_5qejq")
-theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
-theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_g6qgo")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_v0yh3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_rnw5c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1cf75")
-text = "Reactive Strike"
-alignment = 0
-
-[node name="SkillButtonContainer" type="HBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SkillButtonContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
+[node name="GridContainer" type="GridContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="FeatButton" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+[node name="FeatButton" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_nsc52")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
-
-[node name="FeatButton2" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("1_nsc52")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "skill training"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
 
-[node name="FeatButton3" type="PanelContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+[node name="FeatButton2" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("1_nsc52")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "skill training"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Header/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
 
-[node name="ColorRect2" type="ColorRect" parent="Header/SplitContainer"]
+[node name="FeatButton3" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_nsc52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
+
+[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jksd7")
+text = "Skill
+"
+
+[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xu0fo")
+text = "Class Feat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8qpis")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nh8wo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lif5d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x5neb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
+text = "Reactive Strike"
+alignment = 0
+
+[node name="Level-2-Options2" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer"]
+layout_mode = 2
+text = "Level 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3jtve")
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SkillButtonContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="FeatButton" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer" instance=ExtResource("2_g5q8q")]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jksd7")
+text = "Skill
+"
+
+[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xu0fo")
+text = "Class Feat"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_8qpis")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nh8wo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lif5d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x5neb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
+text = "Bravery"
+alignment = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_8qpis")
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nh8wo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lif5d")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x5neb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
+text = "Sneak Attack"
+alignment = 0
+
+[node name="ColorRect2" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer"]
+clip_contents = true
 layout_mode = 2
 color = Color(0.109804, 0.105882, 0.141176, 1)
 
-[node name="ColorRect" type="ColorRect" parent="Header"]
-anchors_preset = 10
+[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
-offset_top = 42.0
-offset_bottom = 47.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-color = Color(0.686275, 0.364706, 0.847059, 1)
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gh3pk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4comj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Health 5/5"
+
+[node name="ColorRect2" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)

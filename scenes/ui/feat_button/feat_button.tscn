@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://hgxg6k6ew5ig"]
+
+[ext_resource type="Texture2D" uid="uid://b7p5xg7wirb0g" path="res://icons/beech.png" id="1_l1t3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p6a5"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 0.419608)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwwlj"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tt3j"]
+
+[node name="FeatButton" type="PanelContainer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_l1t3u")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
