@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://clthlem2uwuun"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8p6a5"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 0.419608)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwwlj"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qse4f"]
+bg_color = Color(0.180392, 0.168627, 0.247059, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sd4w"]
+
+[node name="BorderButton" type="Button"]
+theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
+text = "Human"

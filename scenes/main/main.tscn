@@ -1,7 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://g4pmy31y0xbp"]
+[gd_scene load_steps=45 format=3 uid="uid://g4pmy31y0xbp"]
 
 [ext_resource type="Texture2D" uid="uid://b7p5xg7wirb0g" path="res://icons/beech.png" id="1_nsc52"]
+[ext_resource type="PackedScene" uid="uid://clthlem2uwuun" path="res://scenes/ui/border_button/border_button.tscn" id="1_s3g32"]
 [ext_resource type="PackedScene" uid="uid://hgxg6k6ew5ig" path="res://scenes/ui/feat_button/feat_button.tscn" id="2_g5q8q"]
+[ext_resource type="PackedScene" uid="uid://7qylw6q4r0ly" path="res://scenes/ui/expandable_free_feat_button/expandable_free_feat_button.tscn" id="3_sd5ln"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_734y0"]
 content_margin_left = 20.0
@@ -58,23 +60,13 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sd4w"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_htngl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb37u"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sd4w"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tt3j"]
-
-[sub_resource type="Theme" id="Theme_5qejq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6qgo"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0yh3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rnw5c"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cf75"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jtve"]
 bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
@@ -135,12 +127,71 @@ corner_radius_bottom_left = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4comj"]
 bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxc80"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0980392, 0.0941176, 0.121569, 1)
+border_width_bottom = 5
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwyni"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.0980392, 0.0941176, 0.121569, 1)
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1cgr"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+bg_color = Color(0.0980392, 0.0941176, 0.121569, 1)
+border_color = Color(0.686275, 0.364706, 0.847059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tf4y5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vulf"]
+bg_color = Color(0.0980392, 0.0941176, 0.121569, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nak26"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mtvfw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j2glt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8iyu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1c2y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2g6yf"]
 
 [node name="Main" type="Node"]
 
-[node name="Header" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Background" type="ColorRect" parent="Header"]
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -148,20 +199,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.686275, 0.364706, 0.847059, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 5
 
-[node name="Header" type="ColorRect" parent="Header/Background/VBoxContainer"]
+[node name="Header" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 color = Color(0.109804, 0.105882, 0.141176, 1)
 
-[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/Header"]
+[node name="Button2" type="Button" parent="CanvasLayer/Background/VBoxContainer/Header"]
 layout_mode = 2
 offset_left = 60.0
 offset_right = 163.0
@@ -175,14 +227,14 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_734y0")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_734y0")
 text = "Menu"
 
-[node name="CharacterTab" type="HBoxContainer" parent="Header/Background/VBoxContainer/Header"]
+[node name="CharacterTab" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Header"]
 layout_mode = 2
 offset_left = 223.0
 offset_right = 491.0
 offset_bottom = 50.0
 theme_override_constants/separation = 0
 
-[node name="CloseCharacter" type="Button" parent="Header/Background/VBoxContainer/Header/CharacterTab"]
+[node name="CloseCharacter" type="Button" parent="CanvasLayer/Background/VBoxContainer/Header/CharacterTab"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_n0fkj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_lajav")
@@ -191,7 +243,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_qaaig")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iabnr")
 text = "X"
 
-[node name="SwitchCharacter" type="Button" parent="Header/Background/VBoxContainer/Header/CharacterTab"]
+[node name="SwitchCharacter" type="Button" parent="CanvasLayer/Background/VBoxContainer/Header/CharacterTab"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0ffwd")
@@ -201,12 +253,12 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0ffwd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0ffwd")
 text = "Unknown Adventurer - Fighter 1"
 
-[node name="ColorRect" type="ColorRect" parent="Header/Background/VBoxContainer"]
+[node name="Body" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.109804, 0.105882, 0.141176, 0)
 
-[node name="SplitContainer" type="SplitContainer" parent="Header/Background/VBoxContainer/ColorRect"]
+[node name="SplitContainer" type="SplitContainer" parent="CanvasLayer/Background/VBoxContainer/Body"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,12 +268,12 @@ grow_vertical = 2
 theme_override_constants/separation = 5
 split_offset = 250
 
-[node name="BuildSection" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer"]
+[node name="BuildSection" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer"]
 clip_contents = true
 layout_mode = 2
 color = Color(0.109804, 0.105882, 0.141176, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection"]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,20 +282,20 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="BackgroundOptions" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+[node name="BackgroundOptions" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
 visible = false
 layout_mode = 2
 text = "Level 1
@@ -251,30 +303,25 @@ text = "Level 1
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ssmnw")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("1_s3g32")]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
-text = "Human"
 
-[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -282,7 +329,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
 text = "Seer"
 
-[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -290,13 +337,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
 text = "Fighter"
 
-[node name="ColorRect3" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -308,11 +355,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -320,7 +367,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
 text = "Human"
 
-[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -328,7 +375,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
 text = "Seer"
 
-[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/BackgroundOptions/VBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -336,142 +383,142 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
 text = "Fighter"
 
-[node name="Level-1-Options" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+[node name="Level-1-Options" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
 layout_mode = 2
 text = "Level 1
 "
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ssmnw")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="FeatButton" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="FeatButton" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_nsc52")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
-
-[node name="FeatButton2" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("1_nsc52")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "skill training"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
 
-[node name="FeatButton3" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="FeatButton2" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("1_nsc52")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "skill training"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="FeatButton3" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_nsc52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/FeatButton3"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iwwlj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0tt3j")
+
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -479,7 +526,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2sd4w")
 text = "Heritage"
 
-[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -487,7 +534,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_htngl")
 text = "Ancestory"
 
-[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_8p6a5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iwwlj")
@@ -495,162 +542,149 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_qse4f")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fb37u")
 text = "Class Feat"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ExpandableFreeFeatButton" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_sd5ln")]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-1-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_5qejq")
-theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
-theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_g6qgo")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_v0yh3")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_rnw5c")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1cf75")
-text = "Reactive Strike"
-alignment = 0
-
-[node name="Level-2-Options" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+[node name="Level-2-Options" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
 layout_mode = 2
 text = "Level 2
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3jtve")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="SkillButtonContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SkillButtonContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="FeatButton" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+[node name="FeatButton" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_nsc52")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
-
-[node name="FeatButton2" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("1_nsc52")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "skill training"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
 
-[node name="FeatButton3" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+[node name="FeatButton2" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("1_nsc52")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "skill training"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
 
-[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="FeatButton3" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("1_nsc52")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "skill training"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
+
+[node name="Button2" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
@@ -659,7 +693,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_jksd7")
 text = "Skill
 "
 
-[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
@@ -667,11 +701,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xu0fo")
 text = "Class Feat"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8qpis")
 theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
@@ -684,47 +718,47 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
 text = "Reactive Strike"
 alignment = 0
 
-[node name="Level-2-Options2" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
+[node name="Level-2-Options2" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="LevelLabel" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer"]
 layout_mode = 2
 text = "Level 3
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3jtve")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="SkillButtonContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="SkillButtonContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="FeatButton" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer" instance=ExtResource("2_g5q8q")]
+[node name="FeatButton" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer" instance=ExtResource("2_g5q8q")]
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button2" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
@@ -733,7 +767,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_jksd7")
 text = "Skill
 "
 
-[node name="Button3" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button3" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
@@ -741,10 +775,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xu0fo")
 text = "Class Feat"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button4" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8qpis")
 theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
@@ -757,10 +791,10 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
 text = "Bravery"
 alignment = 0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Button4" type="Button" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/BuildSection/ScrollContainer/VBoxContainer/Level-2-Options2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme = SubResource("Theme_8qpis")
 theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
@@ -773,12 +807,12 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
 text = "Sneak Attack"
 alignment = 0
 
-[node name="ColorRect2" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer"]
+[node name="RightColumn" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer"]
 clip_contents = true
 layout_mode = 2
 color = Color(0.109804, 0.105882, 0.141176, 1)
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -787,33 +821,186 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gh3pk")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4comj")
 
-[node name="MarginContainer" type="MarginContainer" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Label" type="Label" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Health 5/5"
 
-[node name="ColorRect2" type="ColorRect" parent="Header/Background/VBoxContainer/ColorRect/SplitContainer/ColorRect2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelBorderButton" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_s3g32")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Level 
+1"
+alignment = 0
+
+[node name="BorderButton" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_s3g32")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "XP
+0"
+alignment = 0
+
+[node name="LevelBorderButton2" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_s3g32")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Name
+Unknown Adventurer"
+alignment = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Size
+Medium"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Speed
+5"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Jump
+3"
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4comj")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelBorderButton" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_s3g32")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Level 
+1"
+alignment = 0
+
+[node name="BorderButton" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_s3g32")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "XP
+0"
+alignment = 0
+
+[node name="LevelBorderButton2" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_s3g32")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Name
+Unknown Adventurer"
+alignment = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Size
+Medium"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Speed
+5"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Jump
+3"
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
+
+[node name="Equipment" type="TabContainer" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/icon_separation = 0
+theme_override_font_sizes/font_size = 15
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_sxc80")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_wwyni")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_u1cgr")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_tf4y5")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vulf")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_nak26")
+
+[node name="Equipment" type="TabBar" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/Equipment"]
+layout_mode = 2
+
+[node name="Pets" type="TabBar" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/Equipment"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_mtvfw")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_j2glt")
+
+[node name="Feats" type="TabBar" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/Equipment"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_k8iyu")
+
+[node name="Details" type="TabBar" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/Equipment"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_k1c2y")
+
+[node name="Actions" type="TabBar" parent="CanvasLayer/Background/VBoxContainer/Body/SplitContainer/RightColumn/PanelContainer/MarginContainer/VBoxContainer/Equipment"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_2g6yf")

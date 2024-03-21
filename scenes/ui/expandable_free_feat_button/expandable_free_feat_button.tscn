@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://7qylw6q4r0ly"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhmsy"]
+
+[sub_resource type="Theme" id="Theme_5qejq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6qgo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0yh3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rnw5c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cf75"]
+
+[node name="ExpandableFreeFeatButton" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yhmsy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_5qejq")
+theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g6qgo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_v0yh3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rnw5c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1cf75")
+text = "Reactive Strike"
+alignment = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Trigger A creature within your reach uses a manipulate action or a move action, makes a ranged attack, or leaves a square during a move action it’s using.
+
+You lash out at a foe that leaves an opening. Make a melee Strike against the triggering creature. If your attack is a critical hit and the trigger was a manipulate action, you disrupt that action. This Strike doesn’t count toward your multiple attack penalty, and your multiple attack penalty doesn’t apply to this Strike."
+autowrap_mode = 3
