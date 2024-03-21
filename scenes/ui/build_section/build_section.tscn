@@ -1,61 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnxx1klqquu4s"]
+[gd_scene load_steps=5 format=3 uid="uid://bnxx1klqquu4s"]
 
-[ext_resource type="Texture2D" uid="uid://b7p5xg7wirb0g" path="res://icons/beech.png" id="1_mawvm"]
+[ext_resource type="PackedScene" uid="uid://hgxg6k6ew5ig" path="res://scenes/ui/feat_button/feat_button.tscn" id="1_kowgt"]
+[ext_resource type="PackedScene" uid="uid://7qylw6q4r0ly" path="res://scenes/ui/expandable_free_feat_button/expandable_free_feat_button.tscn" id="2_fjpng"]
+[ext_resource type="PackedScene" uid="uid://clthlem2uwuun" path="res://scenes/ui/border_button/border_button.tscn" id="2_ifbia"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3jtve"]
 bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.137255)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xaqya"]
-bg_color = Color(0.180392, 0.168627, 0.247059, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.686275, 0.364706, 0.847059, 0.419608)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4kqap"]
-bg_color = Color(0.180392, 0.168627, 0.247059, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.686275, 0.364706, 0.847059, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yahux"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y71ja"]
-bg_color = Color(0.180392, 0.168627, 0.247059, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.686275, 0.364706, 0.847059, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jksd7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xu0fo"]
-
-[sub_resource type="Theme" id="Theme_8qpis"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nh8wo"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lif5d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5neb"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6lcd"]
 
 [node name="BuildSection" type="MarginContainer"]
 
@@ -65,7 +15,7 @@ theme_override_constants/separation = 0
 
 [node name="LevelLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Level 1
+text = "Level 0
 "
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -93,137 +43,20 @@ alignment = 1
 layout_mode = 2
 columns = 3
 
-[node name="FeatButton" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
+[node name="FeatButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer" instance=ExtResource("1_kowgt")]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
+[node name="FeatButtonContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer"]
+[node name="BorderButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FeatButtonContainer" instance=ExtResource("2_ifbia")]
 layout_mode = 2
+text = "Class"
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
+[node name="BorderButton2" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FeatButtonContainer" instance=ExtResource("2_ifbia")]
 layout_mode = 2
-texture = ExtResource("1_mawvm")
-expand_mode = 1
-stretch_mode = 5
+text = "General"
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton/MarginContainer/VBoxContainer"]
+[node name="ExpandableFreeFeatButton" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_fjpng")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
-
-[node name="FeatButton2" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_mawvm")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton2"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
-
-[node name="FeatButton3" type="PanelContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-texture = ExtResource("1_mawvm")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "skill training"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SkillButtonContainer/GridContainer/FeatButton3"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yahux")
-
-[node name="Button2" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_jksd7")
-text = "Skill
-"
-
-[node name="Button3" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_xaqya")
-theme_override_styles/hover = SubResource("StyleBoxFlat_4kqap")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_y71ja")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xu0fo")
-text = "Class Feat"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Button4" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme = SubResource("Theme_8qpis")
-theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_pressed_color = Color(0.686275, 0.364706, 0.847059, 1)
-theme_override_colors/font_hover_color = Color(0.686275, 0.364706, 0.847059, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_nh8wo")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_lif5d")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_x5neb")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_j6lcd")
-text = "Reactive Strike"
-alignment = 0
