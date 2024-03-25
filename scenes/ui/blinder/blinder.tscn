@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://csulei2tvnc2y"]
+
+[ext_resource type="Shader" path="res://shaders/gaussian_blur.gdshader" id="1_0pl1m"]
+[ext_resource type="Script" path="res://scenes/ui/blinder/blinder.gd" id="2_3cpk8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cbsvo"]
+shader = ExtResource("1_0pl1m")
+shader_parameter/blur_type = 0
+shader_parameter/blur_amount = 9
+shader_parameter/blur_radius = 1.0
+shader_parameter/blur_direction = Vector2(1, 0)
+
+[node name="Blinder" type="ColorRect"]
+material = SubResource("ShaderMaterial_cbsvo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_3cpk8")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

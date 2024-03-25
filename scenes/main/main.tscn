@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://g4pmy31y0xbp"]
+[gd_scene load_steps=26 format=3 uid="uid://g4pmy31y0xbp"]
 
 [ext_resource type="PackedScene" uid="uid://irtegg4cfjbh" path="res://scenes/ui/build_section_container/build_section_container.tscn" id="1_3ykpv"]
 [ext_resource type="PackedScene" uid="uid://clthlem2uwuun" path="res://scenes/ui/border_button/border_button.tscn" id="1_s3g32"]
-[ext_resource type="Shader" path="res://shaders/gaussian_blur.gdshader" id="3_litnj"]
+[ext_resource type="PackedScene" uid="uid://csulei2tvnc2y" path="res://scenes/ui/blinder/blinder.tscn" id="3_11lai"]
 [ext_resource type="PackedScene" uid="uid://b23m7lig0mm3f" path="res://scenes/ui/class_menu/class_menu.tscn" id="4_ygdeu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_734y0"]
@@ -94,13 +94,6 @@ corner_radius_bottom_left = 5
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8iyu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k1c2y"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cbsvo"]
-shader = ExtResource("3_litnj")
-shader_parameter/blur_type = 0
-shader_parameter/blur_amount = 9
-shader_parameter/blur_radius = 1.0
-shader_parameter/blur_direction = Vector2(1, 0)
 
 [node name="Main" type="Node"]
 
@@ -403,18 +396,10 @@ visible = false
 layout_mode = 2
 theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_2g6yf")
 
-[node name="Blinder" type="ColorRect" parent="CanvasLayer/Background"]
-visible = false
-material = SubResource("ShaderMaterial_cbsvo")
+[node name="Blinder" parent="CanvasLayer/Background" instance=ExtResource("3_11lai")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background"]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Background" groups=["menu"]]
 custom_minimum_size = Vector2(650, 550)
 layout_mode = 1
 anchors_preset = 8
